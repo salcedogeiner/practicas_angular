@@ -8,12 +8,12 @@
  * Factory in the seguridadAngularApp.
  */
 angular.module('seguridadAngularApp')
-  .factory('inventario', function () {
+  .factory('inventario', function ($http) {
     // Service logic
     // ...
 
     var productos = [];
-    var categorias = [{id:1,nombre:"casa"},{id:1,nombre:"deportes"},{id:1,nombre:"video juegos"}]
+    //var categorias = [{id:1,nombre:"casa"},{id:1,nombre:"deportes"},{id:1,nombre:"video juegos"}]
 
     // Public API here
     return {
@@ -24,7 +24,7 @@ angular.module('seguridadAngularApp')
         productos.push(item);
       },
       get_categorias: function(){
-        return categorias;
+        return $http.get("scripts/json/tipos_categoria.json")
       },
       delete_item: function(item){
         productos.splice(productos.indexOf(item), 1);

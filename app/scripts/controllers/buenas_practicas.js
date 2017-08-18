@@ -11,7 +11,9 @@ angular.module('seguridadAngularApp')
   .controller('BuenasPracticasCtrl',  function (inventario, $sce,$scope) {
     var self = this;
     self.actualizar=false;
-    self.categorias= inventario.get_categorias();
+    inventario.get_categorias().then(function(response){
+      self.categorias=response.data;
+    });
     self.template = "<h4> {{buenasPracticas.my_item.nombre}} </h4>"+
         "<p> {{buenasPracticas.my_item.descripcion}} </p>";
 

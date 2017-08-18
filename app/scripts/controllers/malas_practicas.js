@@ -13,7 +13,9 @@ angular.module('seguridadAngularApp')
     var self = this;
     self.nuevo_item={};
     self.actualizar=false;
-    self.categorias= inventario.get_categorias();
+    $scope.fabrica.get_categorias().then(function(response){
+      self.categorias=response.data;
+    });
 
 
     self.agregar_item=function(){
